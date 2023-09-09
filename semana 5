@@ -1,1 +1,66 @@
+let libro = [
 
+];
+
+let biblioteca = [
+
+];
+
+const addbook = (titulo, autor, año) => {
+
+    libro.titulo = titulo;
+    libro.autor = autor;
+    libro.año = año;
+
+    let copiadellibro = {...libro}
+
+    biblioteca.push(copiadellibro);
+    console.log(`Se ha añadido el libro: ${titulo}`)
+}
+
+const printListBooks = () => {
+    for (let i = 0; i <= biblioteca.length - 1; i++){
+        console.log(`Libro: ${biblioteca[i].titulo}`);
+        console.log(`Autor: ${biblioteca[i].autor}`);
+        console.log(`Año  : ${biblioteca[i].año}`);
+        console.log("------------------------------------------------");
+    }
+
+}
+
+
+const manageLibrary = (actionInput, titulodellibro, autordellibro, añodellibro) => {
+    console.log("");
+    console.log("Elija una opción: ");
+    console.log("1.- Agregar libro");
+    console.log("2.- Editarlibro ");
+    console.log("3.- Eliminar libro");
+    console.log("4.- Imprimir listado de libros");
+    console.log("");
+
+    switch(actionInput){
+        case "1":
+            addbook(titulodellibro, autordellibro, añodellibro);
+            break;
+        case "2":
+            addSchoolSubject(subject);
+            break;
+        case "3":
+            addRatings(name,subject,rating);
+            break;
+        case "4":
+            console.log(" LIBROS EXISTENTES");
+            console.log();
+            printListBooks();
+            break;
+        default:
+            console.log("Opción inválida, ingrese el número de la opción");
+    }
+}
+
+
+manageLibrary("1","Crónicas de un superhéroe en paro","Manuel Lara Herbón","2016");
+manageLibrary("1","Operación Ulises","David Aramburo","2016");
+manageLibrary("1","El hombre entre las máquinas","Blas M. Vinagre ","2023");
+manageLibrary("1","El agente extranjero","Amado Gómez Ugarte","2021");
+manageLibrary("4","","","");
