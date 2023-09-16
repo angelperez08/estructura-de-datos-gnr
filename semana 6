@@ -1,1 +1,30 @@
+class carroscool {
+    constructor(
+     motor,chasis,llantas,amortiguadores
+    ){
+      this.motor = motor;
+      this.chasis = chasis;
+      this.llantas = llantas;
+      this.amortiguadores = amortiguadores;
+
+     this.infocool = `carroscool tiene las siguientes caracteristicas:
+     motor: ${this.motor},
+     chasis: ${this.chasis},
+     llantas: ${this.llantas},
+     amortiguadores: ${this.amortiguadores}
+     `;
+    }
+     mostrarinfo() {
+        console.log(this.infocool);
+     }
+    }
+    
+const cool1 = new carroscool(
+    "monocilindrico",
+    "bastidor",
+    "michelin",
+    "fox",
+);
+
+cool1.mostrarinfo();
 
