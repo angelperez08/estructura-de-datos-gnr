@@ -1,30 +1,62 @@
-class carroscool {
+class estudiante {
     constructor(
-     motor,chasis,llantas,amortiguadores
+        nombre,matricula,nota,
     ){
-      this.motor = motor;
-      this.chasis = chasis;
-      this.llantas = llantas;
-      this.amortiguadores = amortiguadores;
-
-     this.infocool = `carroscool tiene las siguientes caracteristicas:
-     motor: ${this.motor},
-     chasis: ${this.chasis},
-     llantas: ${this.llantas},
-     amortiguadores: ${this.amortiguadores}
-     `;
+        this.nombre = nombre;
+        this.matricula = matricula;
+        this.nota = nota;
+        
     }
-     mostrarinfo() {
-        console.log(this.infocool);
-     }
-    }
-    
-const cool1 = new carroscool(
-    "monocilindrico",
-    "bastidor",
-    "michelin",
-    "fox",
-);
+}
 
-cool1.mostrarinfo();
+class escuela {
+    constructor() {
+        this.estudiantes = [];
+    }
+
+    añadirestudiante(estudiante) {
+        this.estudiantes.push(estudiante);
+        console.log(`Se añadio al alumno ${estudiante.nombre}`);
+    }
+
+    editarestudiante(nombre,matricula,nota) {
+        let indice = this.estudiantes.findIndex(estudiante => estudiante.matricula == matricula);
+        let nombreAnterior = this.estudiantes[indice].nombre;
+        this.estudiantes[indice].nombre = nombre;
+        this.estudiantes[indice].matricula = matricula;
+        this.estudiantes[indice].nota = nota;
+        console.log(`Se edito al estudiante ${nombreAnterior}`);
+    }
+
+    eliminarnota(nota) {
+        let indice = this.estudiantes.findIndex(estudiante => estudiante.nota == nota);
+        let nombreestudiante = this.estudiantes[indice].nombre;
+        this.estudiantes.splice(indice,1);
+        console.log(`Se eliminio nota ${nombreestudiante}`);
+    }
+
+    listarEmpleados(){
+        console.log();
+        console.log("Lista de alumnos");
+        console.log();
+        console.log();
+        for (let estudiante of this.estudiantes) {
+            console.log(`nombre: ${estudiante.nombre}`);
+            console.log(`matricula:${estudiante.matricula}`);
+            console.log(`nota:${estudiante.nota}`);
+            console.log();
+        }
+    }
+}
+
+let nuevaescuela = new escuela();
+
+nuevaescuela.añadirestudiante(new estudiante("kevin perez rodriguez", "1234", "9.5"));
+nuevaescuela.añadirestudiante(new estudiante("jose luis ku", "2345", "8.5"));
+nuevaescuela.añadirestudiante(new estudiante("joed camaal", "3456", "9.0"));
+nuevaescuela.listarEmpleados();
+nuevaescuela.editarestudiante("kevin perez rodriguez","1234","10");
+nuevaescuela.listarEmpleados();
+nuevaescuela.eliminarnota("9.5");
+nuevaescuela.listarEmpleados();
 
