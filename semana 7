@@ -1,1 +1,82 @@
+class colaborador {
+    constructor(nombre,apellido,Id,cargo,salario){
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.Id = Id;
+        this.cargo = cargo;
+        this.salario = salario;
+    }
+}
 
+class empresa {
+    constructor() {
+        this.colaboradores = [];
+    }
+
+    agregarcolaborador(colaborador) {
+        this.colaboradores.push(colaborador);
+        console.log(`Se agrego al colaborador ${colaborador.nombre}`);
+    }
+
+    editarcolaborador(nombre,apellido,cargo,salario,Id) {
+        let indice = this.colaboradores.findIndex(colaborador =>colaborador.Id == Id);
+        let nombreAnterior = this.colaboradores[indice].nombre;
+        this.colaboradores[indice].nombre = nombre;
+        this.colaboradores[indice].apellido = apellido;
+        this.colaboradores[indice].Id = Id;
+        this.colaboradores[indice].cargo = cargo;
+        this.colaboradores[indice].salario = salario;
+        console.log(`Se editado el colaborador ${nombreAnterior}`);
+    }
+
+    eliminarcolaborador(Id) {
+        let indice = this.colaboradores.findIndex(colaborador => colaborador.Id == Id);
+        let nombrecolaborador = this.colaboradores[indice].nombre;
+        this.colaboradores.splice(indice,1);
+        console.log(`Se elmino al colaborador ${nombrecolaborador}`);
+    }
+
+    listarcolaboradores(){
+        console.log();
+        console.log("Lista de colaboradores");
+        console.log();
+        console.log();
+        for (let colaborador of this.colaboradores) {
+            console.log(`ID: ${colaborador.Id}`);
+            console.log(`Empleado:${colaborador.nombre}`);
+            console.log(`Apellido:${colaborador.apellido}`);
+            console.log();
+        }
+    }
+}
+
+let Empresa = new empresa();
+
+Empresa.agregarcolaborador(new colaborador(
+    "kevin roberto",
+    "perez rodriguez",
+    "001",
+    "cocinero A",
+    "$20,000"));
+Empresa.agregarcolaborador(new colaborador(
+    "Angel moises",
+    "perez rodriguez",
+    "3460", 
+    "chofer vactor",
+    "$18,000"));
+Empresa.agregarcolaborador(new colaborador(
+"maria roberta", 
+"rodriguez", 
+"1969", 
+"gerente de ama de llaves",
+"$20,000"));
+Empresa.listarcolaboradores();
+Empresa.editarcolaborador(
+    "kevin roberto",
+    "perez rodriguez",
+    "cocinero A",
+    "$30,000",
+    "001");
+Empresa.listarcolaboradores();
+Empresa.eliminarcolaborador("001");
+Empresa.listarcolaboradores();
