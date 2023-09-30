@@ -1,0 +1,36 @@
+class Pilacargada {
+    constructor()
+    {
+        this.Pila = [];
+    }
+
+    push(item) {
+        let limite = this.Pila.length
+        if (limite < 3) {
+            this.Pila.push(item);
+            console.log(`Se añadi el elemento "${item}" a la pila`);
+        } else {
+            console.log(`La pila cargada`);
+            console.log(`Elimine el elemento para añadir a la pila`);
+        }
+
+    }
+
+    pop() {
+        console.log(`Se eliminado el elemento: "${this.Pila.pop()}"`);
+    }
+
+    peek() {
+        console.log(`El elemento de la pila es: "${this.Pila.pop()}"`);
+    }
+}
+
+let Pila = new Pilacargada;
+
+Pila.push("A");
+Pila.push("E");
+Pila.push("I");
+Pila.push("O");
+Pila.pop();
+Pila.push("O");
+Pila.peek();
